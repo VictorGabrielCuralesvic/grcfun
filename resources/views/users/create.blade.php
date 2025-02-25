@@ -11,7 +11,7 @@
     <a href="{{ route('user.index')}}">Listar</a><br>
     <h2>Cadastrar Funcionário</h2>
 
-    <form action="# method=POST">
+    <form action="#" method="POST">
         @@csrf
         @method('POST')
 
