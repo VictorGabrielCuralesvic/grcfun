@@ -14,6 +14,15 @@ Iniciar o projeto criado com laravel
 ```
 php artisan serve
 ```
+php artisan make:view nome
+```
+php artisan make:view courses/show
+```
+
+Executar as migrations
+```
+php artisan migrate
+```
 Acessar o conteúdo padrão do Laravel
 ```
 http://127.0.0.1:8000
