@@ -31,6 +31,12 @@ php artisan make:model NomeDaModel
 php artisan make:model Course
 ```
 
+Criar um arquivo de Request com validação
+```
+php artisan make:request NomeDoRequest
+```
+php artisan make:request UserRequest
+
 Acessar o conteúdo padrão do Laravel
 ```
 http://127.0.0.1:8000

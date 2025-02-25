@@ -17,4 +17,9 @@ class UserController extends Controller
         // carregar a view
         return view('users.create');
     }
+
+    public function store()
+    {
+        
+    }
 }
