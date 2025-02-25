@@ -7,6 +7,7 @@
 </head>
 <body>
 
+    <a href="{{ route('user.create')}}">Cadastrar</a><br>
     <h2>Listar Funcionários</h2>
     
 </body>
