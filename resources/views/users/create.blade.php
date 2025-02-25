@@ -8,11 +8,11 @@
 </head>
 <body>
 
-    <a href="{{ route('user.index')}}">Listar</a><br>
+    <a href="{{ route('user.index') }}">Listar</a><br>
+
     <h2>Cadastrar Funcionário</h2>
 
-    <form action="#" method="POST">
-        @@csrf
+    <form action="#{{ route('user.store') }}
         @method('POST')
 
         <label>Nome: </label>
