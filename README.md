@@ -23,6 +23,14 @@ Executar as migrations
 ```
 php artisan migrate
 ```
+
+Criar Models
+```
+php artisan make:model NomeDaModel
+```
+php artisan make:model Course
+```
+
 Acessar o conteúdo padrão do Laravel
 ```
 http://127.0.0.1:8000
