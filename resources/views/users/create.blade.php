@@ -12,36 +12,45 @@
 
     <h2>Cadastrar Funcionário</h2>
 
-    <form action="#{{ route('user.store') }}
+    @if ($errors->any())
+        <p style="color: red">
+            @foreach ($errors->all() as $error)
+                {{ $error }} <br>
+            @endforeach
+        </p>
+    @endif
+
+    <form action="{{ route('user.store') }}" method="POST" >
+        @csrf
         @method('POST')
 
         <label>Nome: </label>
-        <input type="text" name="name" placeholder="Nome Completo"><br>
-
+        <input type="text" name="name" placeholder="Nome Completo" value="{{ old('name') }}"><br>
+    
         <label>Email: </label>
-        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"><br>
     
         <label>Senha: </label>
-        <input type="password" name="password" placeholder="Senha com minimo 6 caracteres" required><br>
+        <input type="password" name="password" placeholder="Senha com mínimo 6 caracteres"><br>
     
         <label>CPF: </label>
-        <input type="number" name="cpf" placeholder="CPF" required><br>
+        <input type="number" name="cpf" placeholder="CPF" value="{{ old('cpf') }}"><br>
     
         <label>Data de Nascimento: </label>
-        <input type="date" name="data_nascimento" required><br>
+        <input type="date" name="data_nascimento" value="{{ old('data_nascimento') }}"><br>
     
         <label>Telefone: </label>
-        <input type="number" name="telefone" placeholder="Telefone" required><br>
+        <input type="number" name="telefone" placeholder="Telefone" value="{{ old('telefone') }}"><br>
     
         <label>Gênero: </label>
-        <select name="genero" required>
+        <select name="genero">
             <option value="">Selecione</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Feminino">Feminino</option>
-            <option value="Outro">Outro</option>
+            <option value="Masculino" {{ old('genero') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+            <option value="Feminino" {{ old('genero') == 'Feminino' ? 'selected' : '' }}>Feminino</option>
+            <option value="Outro" {{ old('genero') == 'Outro' ? 'selected' : '' }}>Outro</option>
         </select><br>
-
-        <button type="Submit">Cadastrar</button>
+    
+        <button type="submit">Cadastrar</button>
 
     </form>
     

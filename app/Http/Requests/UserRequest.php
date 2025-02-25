@@ -35,7 +35,7 @@ class UserRequest extends FormRequest
 
     public function messages(): array
     {
-        return [
+        return[
             'name.required' => 'O campo Nome é obrigatório.',
             'name.min' => 'O Nome deve ter pelo menos 3 caracteres.',
             'email.required' => 'O campo Email é obrigatório.',
