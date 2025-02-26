@@ -1,39 +1,57 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Curalesvic</title>
-</head>
-<body>
-    
-    <a href="{{ route('user.index') }}">Listar</a>
+@extends('layouts.admin')
 
-    <h2>Visualizar Funcionário</h2>
-    
-    @if (session('success'))
-        <p style="color: green">
-            {{ session('success') }}
-        </p>    
-    @endif
+@section('content')
 
-    ID: {{ $user->id }} <br>
-    Nome: {{ $user->name }} <br>
-    Email: {{ $user->email }} <br>
-    CPF: {{ $user->cpf }} <br>
-    Data de Nascimento: {{ $user->data_nascimento }} <br>
-    Telefone: {{ $user->telefone }} <br>
-    Gênero: {{ $user->genero }} <br>
-    Contratado: {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y H:i:s') }} <br>
-    Editado: {{ \Carbon\Carbon::parse($user->updated_at)->format('d/m/Y H:i:s') }} <br>
+    <div class="card mt-4 mb-4 border-light shadow">
+        <div class="card-header hstack gap-2">
+            <span>Visualizar Funcionário</span>
+            <span class="ms-auto d-sm-flex flex-row">
 
-    <form method="POST" action="{{ route('user.destroy', ['user' => $user->id] )}}">
-        @csrf
-        @method('DELETE')
-        <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este funcionário?')">Apagar</button>
-    </form>
+                <a href="{{ route('user.index') }}" class="btn btn-info btn-sm me-1">Listar</a>
 
+                <a href="{{ route('user.edit', ['user' => $user->id]) }}" class="btn btn-warning btn-sm me-1">Editar</a>
 
-</body>
-</html>
+                <form method="POST" action="{{ route('user.destroy', ['user' => $user->id] )}}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este funcionário?')" class="btn btn-danger btn-sm">Apagar</button>
+                </form>
+            </span>
+        </div>
+
+        <div class="card-body">
+            <x-alert />
+
+            <dl class="row g-3">
+
+                <dt class="col-sm-3">ID</dt>
+                <dd class="col-sm-9">{{ $user->id }}</dd>
+
+                <dt class="col-sm-3">Nome</dt>
+                <dd class="col-sm-9">{{ $user->name }}</dd>
+
+                <dt class="col-sm-3">E-mail</dt>
+                <dd class="col-sm-9">{{ $user->email }}</dd>
+
+                <dt class="col-sm-3">CPF</dt>
+                <dd class="col-sm-9">{{ $user->cpf }}</dd>
+
+                <dt class="col-sm-3">Data de Nascimento</dt>
+                <dd class="col-sm-9">{{ $user->data_nascimento }}</dd>
+
+                <dt class="col-sm-3">Telefone</dt>
+                <dd class="col-sm-9">{{ $user->telefone }}</dd>
+
+                <dt class="col-sm-3">Gênero</dt>
+                <dd class="col-sm-9">{{ $user->genero }}</dd>
+
+                <dt class="col-sm-3">Contratado</dt>
+                <dd class="col-sm-9">{{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}</dd>
+
+                <dt class="col-sm-3">Editado</dt>
+                <dd class="col-sm-9">{{ \Carbon\Carbon::parse($user->updated_at)->format('d/m/Y') }}</dd>
+
+            </dl>
+        </div>    
+    </div>    
+@endsection
