@@ -4,6 +4,8 @@
 * Composer
 * Node.js 20 ou superior
 
+Verique se possui essas dependecias, se não possuir, siga o passo a passo abaixo
+
 ## Wamp Server e Composer
 
 Acesse o site oficial do WampServer:
