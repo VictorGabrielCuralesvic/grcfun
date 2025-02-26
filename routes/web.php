@@ -9,3 +9,4 @@ Route::post('/store-funcionario', [UserController::class, 'store'])->name('user.
 Route::get('/show-funcionario/{user}', [UserController::class, 'show'])->name('user.show');
 Route::get('/edit-funcionario/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/update-funcionario/{user}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/destroy-funcionario/{user}', [UserController::class, 'destroy'])->name('user.destroy');
