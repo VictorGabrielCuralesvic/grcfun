@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . ($userid ? $userid->id : null),
             'password' => 'required|min:6',
-            'cpf' => 'required|numeric|digits:11|unique:users,cpf,' . ($userid ? $userid->id : null),
+            'cpf' => 'required|string|size:11|regex:/^\d{11}$/|unique:users,cpf,' . ($userid ? $userid->id : null),
             'data_nascimento' => 'required|date',
             'telefone' => 'required|numeric|digits_between:10,11',
             'genero' => 'required|in:Masculino,Feminino,Outro',
