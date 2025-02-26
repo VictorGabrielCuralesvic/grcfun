@@ -47,4 +47,28 @@ class UserController extends Controller
         // redirecionar usuário
         return redirect()->route('user.index')->with('success', 'Usuário cadastrado com sucesso');
     }
+
+    public function edit(User $user)
+    {
+        return view('users.edit', ['user' => $user]);
+    }
+
+    public function update(UserRequest $request, User $user)
+    {
+        // Validar o formulário
+        $request->validated();
+
+        // editar as informações do funcionário
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->filled('password') ? bcrypt($request->password) : $user->password,
+            'cpf' => $request->cpf,
+            'data_nascimento' => $request->data_nascimento,
+            'telefone' => $request->telefone,
+            'genero' => $request->genero,
+        ]);
+
+        return redirect()->route('user.show', ['user' => $user->id])->with('success', 'Funcionário editado com sucesso');
+    }
 }
