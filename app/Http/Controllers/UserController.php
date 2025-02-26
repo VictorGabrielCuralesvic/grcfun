@@ -12,7 +12,7 @@ class UserController extends Controller
     {
 
         // listar funcionarios
-        $users = User::orderByDesc('id')->get();
+        $users = User::orderByDesc('id')->paginate(2);
         // carregar view
         return view('users.index', ['users' => $users]);
     }
