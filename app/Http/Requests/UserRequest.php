@@ -21,11 +21,12 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $userid = $this->route('user');
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email,' . ($userid ? $userid->id : null),
             'password' => 'required|min:6',
-            'cpf' => 'required|numeric|digits:11|unique:users,cpf',
+            'cpf' => 'required|numeric|digits:11|unique:users,cpf,' . ($userid ? $userid->id : null),
             'data_nascimento' => 'required|date',
             'telefone' => 'required|numeric|digits_between:10,11',
             'genero' => 'required|in:Masculino,Feminino,Outro',
