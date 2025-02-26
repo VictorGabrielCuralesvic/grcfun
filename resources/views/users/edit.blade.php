@@ -20,7 +20,7 @@
                 @csrf
                 @method('PUT')
 
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <label for="name" class="form-label">Nome</label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="Nome Completo"
                         value="{{ old('name', $user->name) }}">
@@ -58,12 +58,6 @@
                         <option value="Feminino" {{ old('genero', $user->genero) == 'Feminino' ? 'selected' : '' }}>Feminino</option>
                         <option value="Outro" {{ old('genero', $user->genero) == 'Outro' ? 'selected' : '' }}>Outro</option>
                     </select>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="senha" class="form-label">Senha</label>
-                    <input type="password" name="password" class="form-control" id="password"
-                        placeholder="Senha com no mínimo 6 caracteres">
                 </div>
 
                 <div class="col-12">

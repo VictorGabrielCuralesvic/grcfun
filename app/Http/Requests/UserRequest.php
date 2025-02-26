@@ -25,7 +25,6 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . ($userid ? $userid->id : null),
-            'password' => 'required|min:6',
             'cpf' => 'required|string|size:11|regex:/^\d{11}$/|unique:users,cpf,' . ($userid ? $userid->id : null),
             'data_nascimento' => 'required|date',
             'telefone' => 'required|numeric|digits_between:10,11',
@@ -42,8 +41,6 @@ class UserRequest extends FormRequest
             'email.required' => 'O campo Email é obrigatório.',
             'email.email' => 'Informe um email válido.',
             'email.unique' => 'Este email já está em uso.',
-            'password.required' => 'O campo Senha é obrigatório.',
-            'password.min' => 'A Senha deve ter pelo menos 6 caracteres.',
             'cpf.required' => 'O campo CPF é obrigatório.',
             'cpf.numeric' => 'O CPF deve conter apenas números.',
             'cpf.digits' => 'O CPF deve ter exatamente 11 dígitos.',
