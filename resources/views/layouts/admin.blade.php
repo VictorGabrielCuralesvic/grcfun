@@ -31,8 +31,10 @@
             </ul>
     
             <div class="text-end">
-              <button type="button" class="btn btn-outline-light me-2">Login</button>
-              <button type="button" class="btn btn-warning">Sign-up</button>
+              <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                @csrf
+                <button type="submit" class="btn btn-warning">Sign-up</button>
+            </form>
             </div>
           </div>
         </div>
