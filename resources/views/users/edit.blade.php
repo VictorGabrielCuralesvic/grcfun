@@ -1,59 +1,76 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Curalesvic</title>
-</head>
-<body>
+@extends('layouts.admin')
 
-    <a href="{{ route('user.index') }}">Listar</a> <br>
-    <a href="{{ route('user.show', ['user' => $user->id])}}">Visualizar</a> <br>
+@section('content')
+    <div class="card mt-4 mb-4 border-light shadow">
+        <div class="card-header hstack gap-2">
+            <span>Editar Funcionário</span>
+            <span class="ms-auto d-sm-flex flex-row">
 
-    <h2>Editar Funcionário</h2>
+                <a href="{{ route('user.index') }}" class="btn btn-info btn-sm me-1">Listar</a>
 
-    @if ($errors->any())
-        <p style="color: red">
-            @foreach ($errors->all() as $error)
-                {{ $error }} <br>
-            @endforeach
-        </p>
-    @endif
+                <a href="{{ route('user.show', ['user' => $user->id]) }}" class="btn btn-primary btn-sm me-1">Visualizar</a>
 
-    <form action="{{ route('user.update', ['user' => $user->id]) }}" method="POST" >
-        @csrf
-        @method('PUT')
+            </span>
+        </div>
 
-        <label>Nome: </label>
-        <input type="text" name="name" placeholder="Nome Completo" value="{{ old('name', $user->name) }}"><br>
-    
-        <label>Email: </label>
-        <input type="email" name="email" placeholder="Email" value="{{ old('email', $user->email) }}"><br>
-    
-        <label>Senha: </label>
-        <input type="password" name="password" placeholder="Senha com mínimo 6 caracteres"><br>
-    
-        <label>CPF: </label>
-        <input type="number" name="cpf" placeholder="CPF" value="{{ old('cpf', $user->cpf) }}"><br>
-    
-        <label>Data de Nascimento: </label>
-        <input type="date" name="data_nascimento" value="{{ old('data_nascimento', $user->data_nascimento) }}"><br>
-    
-        <label>Telefone: </label>
-        <input type="number" name="telefone" placeholder="Telefone" value="{{ old('telefone', $user->telefone) }}"><br>
-    
-        <label>Gênero: </label>
-        <select name="genero">
-            <option value="">Selecione</option>
-            <option value="Masculino" {{ old('genero', $user->genero) == 'Masculino' ? 'selected' : '' }}>Masculino</option>
-            <option value="Feminino" {{ old('genero', $user->genero) == 'Feminino' ? 'selected' : '' }}>Feminino</option>
-            <option value="Outro" {{ old('genero', $user->genero) == 'Outro' ? 'selected' : '' }}>Outro</option>
-        </select><br>
-    
-        <button type="submit">Salvar</button>
+        <div class="card-body">
+            <x-alert />
 
-    </form>
-    
-</body>
-</html>
+            <form action="{{ route('user.update', ['user' => $user->id]) }}" method="POST" class="row g-3">
+                @csrf
+                @method('PUT')
+
+                <div class="col-md-12">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Nome Completo"
+                        value="{{ old('name', $user->name) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Email"
+                        value="{{ old('email', $user->email) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="text" name="cpf" class="form-control" id="cpf" placeholder="CPF"
+                        value="{{ old('cpf', $user->cpf) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="data-nascimento" class="form-label">Data de Nascimento</label>
+                    <input type="date" name="data_nascimento" class="form-control" id="data_nascimento"
+                        placeholder="Data de Nascimento" value="{{ old('data_nascimento', $user->data_nascimento) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="number" name="telefone" class="form-control" id="telefone" placeholder="Telefone"
+                        value="{{ old('telefone', $user->telefone) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="genero" class="form-label">Gênero</label>
+                    <select name="genero" id="genero" class="form-select">
+                        <option value="">Selecione</option>
+                        <option value="Masculino" {{ old('genero', $user->genero) == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                        <option value="Feminino" {{ old('genero', $user->genero) == 'Feminino' ? 'selected' : '' }}>Feminino</option>
+                        <option value="Outro" {{ old('genero', $user->genero) == 'Outro' ? 'selected' : '' }}>Outro</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" name="password" class="form-control" id="password"
+                        placeholder="Senha com no mínimo 6 caracteres">
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-warning btn-sm">Salvar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+@endsection
