@@ -28,6 +28,12 @@
     Contratado: {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y H:i:s') }} <br>
     Editado: {{ \Carbon\Carbon::parse($user->updated_at)->format('d/m/Y H:i:s') }} <br>
 
+    <form method="POST" action="{{ route('user.destroy', ['user' => $user->id] )}}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este funcionário?')">Apagar</button>
+    </form>
+
 
 </body>
 </html>
