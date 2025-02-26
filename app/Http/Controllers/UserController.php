@@ -71,4 +71,14 @@ class UserController extends Controller
 
         return redirect()->route('user.show', ['user' => $user->id])->with('success', 'Funcionário editado com sucesso');
     }
+
+    public function destroy(User $user)
+    {
+        // deletar funcionário
+        $user->delete();
+
+
+        // redirecionar o usuário após a operação
+        return redirect()->route('user.index', ['user' => $user->id])->with('success', 'Funcionário deletado com sucesso');
+    }
 }
