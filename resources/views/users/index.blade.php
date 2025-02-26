@@ -25,7 +25,8 @@
         Telefone: {{ $user->telefone }} <br>
         Gênero: {{ $user->genero }} <br>
 
-        <a href="{{ route('user.show', ['user' => $user->id])}}">Visualizar</a>
+        <a href="{{ route('user.show', ['user' => $user->id])}}">Visualizar</a> <br>
+        <a href="{{ route('user.edit', ['user' => $user->id])}}">Editar</a> <br>
 
         <hr>
     @empty

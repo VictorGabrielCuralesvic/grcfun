@@ -11,6 +11,12 @@
     <a href="{{ route('user.index') }}">Listar</a>
 
     <h2>Visualizar Funcionário</h2>
+    
+    @if (session('success'))
+        <p style="color: green">
+            {{ session('success') }}
+        </p>    
+    @endif
 
     ID: {{ $user->id }} <br>
     Nome: {{ $user->name }} <br>
@@ -19,6 +25,8 @@
     Data de Nascimento: {{ $user->data_nascimento }} <br>
     Telefone: {{ $user->telefone }} <br>
     Gênero: {{ $user->genero }} <br>
+    Contratado: {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y H:i:s') }} <br>
+    Editado: {{ \Carbon\Carbon::parse($user->updated_at)->format('d/m/Y H:i:s') }} <br>
 
 
 </body>
