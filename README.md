@@ -121,7 +121,11 @@ Acessar o conteúdo do projeto no navegador.
 ```
 http://127.0.0.1:8000
 
+
+## Abaixo é apenas para treinamento, não siga
+
 ## Sequencia para criar o projeto
+
 Criar o projeto com laravel
 ```
 composer create-project laravel/laravel .
